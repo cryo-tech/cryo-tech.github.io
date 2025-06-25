@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Cryo</title>
+    <style>
+        /* (existing CSS unchanged) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacrosystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e8f4f8;
+            background: radial-gradient(circle at 20% 80%, #0a1a2e 0%, #16213e 40%),
+                        radial-gradient(circle at 80% 20%, #16213e 0%, #0f1419 40%),
+                        radial-gradient(circle at 40% 40%, #0f1419 0%, #000000 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .frost-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(108, 196, 240, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px rgba(108, 196, 240, 0.3);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .ice-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(108, 196, 240, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(173, 216, 230, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(135, 206, 235, 0.02) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-link {
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #b8d4e3;
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #6cc4f0 50%, #add8e6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(108, 196, 240, 0.3);
+            letter-spacing: -0.03em;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #b8d4e3;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 20px rgba(108, 196, 240, 0.2);
+        }
+        
+        main {
+            position: relative;
+            z-index: 10;
+            padding: 40px 0 80px;
+        }
+        
+        .terms-content {
+            background: linear-gradient(135deg, rgba(108, 196, 240, 0.05) 0%, rgba(173, 216, 230, 0.03) 100%);
+            border: 1px solid rgba(108, 196, 240, 0.2);
+            border-radius: 24px;
+            padding: 50px;
+            margin: 40px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .terms-content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #6cc4f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(108, 196, 240, 0.3);
+        }
+        
+        .terms-content p, .terms-content ul {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #d0e7f0;
+            line-height: 1.7;
+        }
+        
+        .terms-content ul {
+            margin-left: 30px;
+        }
+        
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(108, 196, 240, 0.2);
+            margin-top: 60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        footer p {
+            color: #87ceeb;
+            font-size: 1rem;
+        }
+        
+        footer a {
+            color: #6cc4f0;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: #add8e6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .terms-content {
+                padding: 30px 25px;
+                margin: 20px 10px;
+            }
+            
+            .back-link {
+                position: relative;
+                left: auto;
+                top: auto;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+            
+            header {
+                padding: 40px 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ice-bg"></div>
+    <div class="frost-particles" id="particles"></div>
+    
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Cryo</a>
+            <div class="hero">
+                <h1>Terms of Service</h1>
+                <p class="subtitle">Clear terms for a transparent AI tool</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="terms-content">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By downloading, installing, launching, accessing, or otherwise utilizing Cryo (the “Software”), you (“User”) irrevocably and unconditionally agree to be bound by these Terms of Service (the “Terms”), which form a legally binding contract between you and the anonymous operator (“Operator”). If you do not agree to all of these Terms in full, you must immediately cease all use of the Software.</p>
+
+                <h2>2. Operator Definition and Anonymity</h2>
+                <p>The Software is licensed, distributed, and maintained by an entity or individual whose identity is intentionally undisclosed (the “Operator”). The Operator’s identity shall remain concealed except where disclosure is legally compelled by valid subpoena, court order, or as required by applicable law. The Operator disclaims any obligation to provide identifying information absent such legal requirement.</p>
+
+                <h2>3. Grant of License; Restrictions</h2>
+                <ul>
+                    <li>Subject to these Terms, the Operator grants a limited, non-exclusive, non-transferable, revocable license to use the Software solely as provided via [your website URL].</li>
+                    <li>User shall not copy, reproduce, modify, adapt, translate, create derivative works of, reverse engineer, decompile, or disassemble the Software.</li>
+                    <li>User shall not distribute, sublicense, lease, rent, sell, assign, or otherwise transfer or commercialize the Software or any component thereof without prior written authorization.</li>
+                    <li>User shall not remove, obscure, or alter any proprietary notices or labels.</li>
+                    <li>User shall not use the Software for any unlawful purpose or in violation of export control laws.</li>
+                    <li>User shall not circumvent or disable any technological measures or security features.</li>
+                </ul>
+
+                <h2>4. Data Processing; Privacy; GDPR &amp; CCPA Safe Harbor</h2>
+                <p>All inputs, outputs, and related data processing occur locally on the User’s device. The Operator does <strong>not</strong> collect, store, transmit, or otherwise access any User data. The Software may write encrypted files solely to preserve application state.</p>
+                <p><strong>GDPR/CCPA Notice:</strong> Although the Software collects no personal data, Users may submit data-subject requests or inquiries to [generic Gmail address]. The Operator reserves the right, in its sole discretion, to respond or not respond to such requests, provided it shall comply with any binding legal obligation to do so.</p>
+
+                <h2>5. Third-Party Components</h2>
+                <p>The Software may incorporate or interface with third-party or open-source components, each governed by its own license. To the extent of any conflict, the third-party license controls.</p>
+
+                <h2>6. Fees, Billing, and Token Definition</h2>
+                <p>Use of the Software is billed at $0.001 per “token,” defined exclusively for billing as four (4) characters (including spaces and punctuation). This is purely a billing construct and does not reflect any internal model architecture. All fees are processed through a third-party payment processor; the Operator neither processes nor stores payment details.</p>
+
+                <h2>7. Refunds; Disputes; Enforcement</h2>
+                <p>All sales are final. <strong>Refunds must be requested and handled exclusively through the payment processor</strong> (e.g., Stripe). The Operator will not process refunds directly. Refunds are only granted if the Software demonstrably fails to perform its core functionality, as determined solely by the Operator. All disputes, chargebacks, or refund requests are to be resolved with the payment processor; the Operator disclaims any obligation to intervene directly.</p>
+
+                <h2>8. No Warranty; “As-Is” Disclaimer</h2>
+                <p>THE SOFTWARE IS PROVIDED “AS IS,” “WITH ALL FAULTS,” AND “AS AVAILABLE,” WITHOUT WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</p>
+
+                <h2>9. Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE OPERATOR SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR LOSS OF PROFITS, REVENUE, DATA, OR BUSINESS OPPORTUNITY ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+                <h2>10. Indemnification</h2>
+                <p>User agrees to defend, indemnify, and hold harmless the Operator, its affiliates, officers, agents, and employees from any claims, liabilities, damages, losses, costs, or expenses (including reasonable attorneys’ fees) arising from User’s use or misuse of the Software, violation of these Terms, or infringement of third-party rights.</p>
+
+                <h2>11. Intellectual Property</h2>
+                <p>All rights, title, and interest in and to the Software, including all intellectual property rights, remain with the Operator and its licensors. No rights are transferred to the User except as expressly granted herein.</p>
+
+                <h2>12. Binding Arbitration &amp; Class-Action Waiver</h2>
+                <p>Any dispute arising under these Terms shall be resolved by binding individual arbitration under the American Arbitration Association’s Consumer Arbitration Rules. User and Operator each waive the right to a jury trial and to participate in any class, collective, or representative action.</p>
+
+                <h2>13. Export Control &amp; Sanctions Warranty</h2>
+                <p>User represents and warrants that they are not located in any country subject to U.S. government embargo or on any U.S. government list of prohibited or restricted parties. The User agrees to comply with all applicable export control laws. Operator makes no active verification beyond this self-certification but reserves all rights to enforce export compliance.</p>
+
+                <h2>14. Change Logs &amp; Versioning; Constructive Notice</h2>
+                <p>Operator shall maintain a public changelog at [your website URL/changelog]. All Software updates and any corresponding updates to these Terms become effective upon publication. Continued use constitutes acceptance.</p>
+
+                <h2>15. Residuals &amp; Feedback</h2>
+                <p>Any feedback, suggestions, bug reports, or other input provided by User (“Feedback”) is non-confidential and becomes the sole property of the Operator, royalty-free, worldwide, irrevocable, and transferable.</p>
+
+                <h2>16. No Implied License to Trademarks</h2>
+                <p>Nothing in these Terms grants User any rights or licenses to Operator trademarks, logos, trade names, or trade dress.</p>
+
+                <h2>17. Assignment</h2>
+                <p>Operator may assign or transfer its rights and obligations under these Terms, in whole or in part, at any time without notice. User may not assign or transfer any rights or obligations.</p>
+
+                <h2>18. Survival</h2>
+                <p>Sections 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 16, 17, 19, 20, 21, and 22 survive termination of these Terms.</p>
+
+                <h2>19. Headings; Construction</h2>
+                <p>Section headings are for reference only and do not affect interpretation. The words “include,” “including,” or “such as” mean “without limitation.”</p>
+
+                <h2>20. Severability</h2>
+                <p>If any provision is held invalid, illegal, or unenforceable, the remaining provisions remain in full force and effect.</p>
+
+                <h2>21. Force Majeure</h2>
+                <p>Operator shall not be liable for delays or failures resulting from causes beyond its reasonable control, including natural disasters, war, terrorism, strikes, or Internet failures.</p>
+
+                <h2>22. Entire Agreement; Waiver</h2>
+                <p>These Terms, together with any referenced policies, constitute the entire agreement and supersede all prior negotiations. No waiver of any breach shall be deemed a waiver of any subsequent breach.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© [Year] Cryo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
